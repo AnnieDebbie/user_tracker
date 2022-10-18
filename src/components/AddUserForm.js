@@ -5,9 +5,12 @@ import ErrorModal from "./ErrorModal";
 function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
-  const [isNameValid, setIsNameValid] = useState(false);
-  const [isAgeValid, setIsAgeValid] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
+
+  /*
+  let allInfo=[...props.allInfo]
+  console.log(allInfo,allInfo[0].setIsAgeValid)
+  */
+
   function nameChangeHandler(e) {
     let nameValue = e.target.value;
     setUserName(nameValue);
@@ -26,23 +29,17 @@ function AddUserForm(props) {
       id: uuidv4(),
     };
     props.onAddUser(userData);
-    setIsFormValid(validateInput());
-    console.log(userData);
-    console.log(`in add user form` + userData);
+    props.setIsFormValid(validateInput());
+    console.log(validateInput());
   }
 
   function validateInput() {
-    // console.log(userData["name"])
-    userName.length > 0 && setIsNameValid(true);
-    setIsAgeValid(!isNaN(userAge));
+    userName.length > 0 && props.setIsNameValid(true);
+    props.setIsAgeValid(!isNaN(userAge));
 
-    if (isAgeValid && isNameValid) return true;
-    else return "invalid input";
+    if (props.isAgeValid && props.isNameValid) return true;
+    else return false;
   }
-
-  // function validateForm() {
-  //   setFormValid(isNameValid && isAgeValid);
-  // }
 
   return (
     <div>
@@ -62,13 +59,6 @@ function AddUserForm(props) {
           />
         </div>
         <button> Add User </button>
-        {isFormValid ? (
-          <ErrorModal isAgeValid={isAgeValid} isNameValid={isNameValid}>
-            {" "}
-          </ErrorModal>
-        ) : (
-          ""
-        )}{" "}
       </form>
     </div>
   );
