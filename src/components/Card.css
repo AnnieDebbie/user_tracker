@@ -1,0 +1,8 @@
+.card {
+    margin-top: 6vh;
+    background: #fefefe;
+    padding: 15px 10px 0px;
+    box-shadow: 2px -4px 10px rgba(68, 0, 100, 0.15);
+    border-radius: 32px 32px 0px 0px;
+    min-height: fit-content;
+}
