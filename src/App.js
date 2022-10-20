@@ -16,11 +16,6 @@ function App() {
 
   function checkFormValidity(validValue) {
     setIsFormValid(validValue);
-    console.log(
-      setIsFormValid((prevValue) => {
-        console.log(prevValue);
-      })
-    );
   }
 
   const allInfo = [
@@ -31,20 +26,20 @@ function App() {
       isAgeValid: isAgeValid,
       isNameValid: isNameValid,
       setIsAgeValid: setIsAgeValid,
-      setIsNameValid: setIsAgeValid,
+      setIsNameValid: setIsNameValid,
     },
   ];
   return (
     <div className="">
       <AddUserForm
         allInfo={allInfo}
-        isFormValid={isFormValid}
-        setIsFormValid={checkFormValidity}
-        onAddUser={addUserHandler}
-        isAgeValid={isAgeValid}
-        isNameValid={isNameValid}
-        setIsAgeValid={setIsAgeValid}
-        setIsNameValid={setIsAgeValid}
+        // isFormValid={isFormValid}
+        // setIsFormValid={checkFormValidity}
+        // onAddUser={addUserHandler}
+        // isAgeValid={isAgeValid}
+        // isNameValid={isNameValid}
+        // setIsAgeValid={setIsAgeValid}
+        // setIsNameValid={setIsNameValid}
       />
       {isFormValid ? (
         <Users users={users} />
