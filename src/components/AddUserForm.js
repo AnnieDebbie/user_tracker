@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import ErrorModal from "./ErrorModal";
 
 function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
 
   let propsData = props.allInfo[0];
-  // console.log(allInfo);
 
   function nameChangeHandler(e) {
     let nameValue = e.target.value;
@@ -18,12 +16,23 @@ function AddUserForm(props) {
     setUserAge(e.target.value);
   }
 
+  function validateInput() {
+    let nameValidity = userName.trim().length > 0;
+    let ageValidity = !isNaN(userAge) && userAge.trim().length > 0;
+
+    propsData.setIsNameValid(nameValidity);
+    propsData.setIsAgeValid(ageValidity);
+
+    if (nameValidity && ageValidity) return true;
+    else return false;
+  }
+
   function submitHandler(e) {
     e.preventDefault();
 
-    let formValid=validateInput()
+    let formValid = validateInput();
 
-    if (formValid){
+    if (formValid) {
       let userData = {
         name: userName,
         age: userAge,
@@ -31,20 +40,8 @@ function AddUserForm(props) {
       };
       propsData.setIsFormValid(true);
       propsData.onAddUser(userData);
-    } 
+    } else propsData.setIsFormValid(false);
 
-    
-    console.log(validateInput());
-  }
-
-  function validateInput() {
-    console.log(userName.trim().length > 0);
-    userName.trim().length > 0 && propsData.setIsNameValid(true);
-    propsData.setIsAgeValid(!isNaN(userAge) && userAge.trim().length > 0);
-    // isNan(empty)=true !false
-    //isNan(14)= false
-    if (propsData.isNameValid && propsData.isAgeValid) return true;
-    else return false;
   }
 
   return (
