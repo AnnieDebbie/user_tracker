@@ -3,6 +3,7 @@ function ErrorModal(props) {
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
 
+  console.log(props.isAgeValid, props.isNameValid)
   function createError() {
     setAgeError(props.isAgeValid || " Please enter a valid number");
     setNameError(props.isNameValid || "Please enter a valid age");

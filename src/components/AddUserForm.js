@@ -6,15 +6,12 @@ function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
 
-  /*
-  let allInfo=[...props.allInfo]
-  console.log(allInfo,allInfo[0].setIsAgeValid)
-  */
+  let propsData = props.allInfo[0];
+  // console.log(allInfo);
 
   function nameChangeHandler(e) {
     let nameValue = e.target.value;
     setUserName(nameValue);
-    validateInput();
   }
 
   function ageChangeHandler(e) {
@@ -23,21 +20,30 @@ function AddUserForm(props) {
 
   function submitHandler(e) {
     e.preventDefault();
-    let userData = {
-      name: userName,
-      age: userAge,
-      id: uuidv4(),
-    };
-    props.onAddUser(userData);
-    props.setIsFormValid(validateInput());
+
+    let formValid=validateInput()
+
+    if (formValid){
+      let userData = {
+        name: userName,
+        age: userAge,
+        id: uuidv4(),
+      };
+      propsData.setIsFormValid(true);
+      propsData.onAddUser(userData);
+    } 
+
+    
     console.log(validateInput());
   }
 
   function validateInput() {
-    userName.length > 0 && props.setIsNameValid(true);
-    props.setIsAgeValid(!isNaN(userAge));
-
-    if (props.isAgeValid && props.isNameValid) return true;
+    console.log(userName.trim().length > 0);
+    userName.trim().length > 0 && propsData.setIsNameValid(true);
+    propsData.setIsAgeValid(!isNaN(userAge) && userAge.trim().length > 0);
+    // isNan(empty)=true !false
+    //isNan(14)= false
+    if (propsData.isNameValid && propsData.isAgeValid) return true;
     else return false;
   }
 
