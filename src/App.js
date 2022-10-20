@@ -41,9 +41,8 @@ function App() {
         // setIsAgeValid={setIsAgeValid}
         // setIsNameValid={setIsNameValid}
       />
-      {isFormValid ? (
-        <Users users={users} />
-      ) : (
+      <Users users={users} />
+      {!isFormValid && (
         <ErrorModal isAgeValid={isAgeValid} isNameValid={isNameValid} />
       )}
     </div>
