@@ -1,19 +1,16 @@
 import { useState } from "react";
 function ErrorModal(props) {
-  const [nameError, setNameError] = useState("");
-  const [ageError, setAgeError] = useState("");
-
-  console.log(props.isAgeValid, props.isNameValid)
-  function createError() {
-    setAgeError(props.isAgeValid || " Please enter a valid number");
-    setNameError(props.isNameValid || "Please enter a valid age");
-  }
-
-  return <div>
-    <p> Error! Error </p>
-    <p> {nameError}</p>
-    <p> {ageError} </p>
-  </div>;
+  let errorProps = props.allInfo;
+  console.log("heyyy")
+  console.log(errorProps.formError, errorProps.ageError, errorProps.nameError);
+  return (
+    <div>
+      <p> Error! Error </p>
+      <p> {errorProps.formError}</p>
+      <p> {errorProps.nameError}</p>
+      <p> {errorProps.ageError} </p>
+    </div>
+  );
 }
 
 export default ErrorModal;

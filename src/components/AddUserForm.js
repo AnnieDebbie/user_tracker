@@ -5,8 +5,7 @@ function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
 
-  let propsData = props.allInfo[0];
-
+  let propsData = props.allInfo;
   function nameChangeHandler(e) {
     let nameValue = e.target.value;
     setUserName(nameValue);
@@ -19,7 +18,6 @@ function AddUserForm(props) {
   function validateInput() {
     let nameValidity = userName.trim().length > 0;
     let ageValidity = !isNaN(userAge) && userAge.trim().length > 0;
-
     propsData.setIsNameValid(nameValidity);
     propsData.setIsAgeValid(ageValidity);
 
@@ -38,10 +36,11 @@ function AddUserForm(props) {
         age: userAge,
         id: uuidv4(),
       };
-      propsData.setIsFormValid(true);
       propsData.onAddUser(userData);
-    } else propsData.setIsFormValid(false);
-
+    } else {
+      propsData.setIsFormValid(false);
+      propsData.showErrorModal(formValid);
+    }
   }
 
   return (
