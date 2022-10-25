@@ -1,14 +1,17 @@
+import styles from "./Users.module.css";
+
 function Users(props) {
   let receivedUserData = props.users;
   console.log(receivedUserData);
 
   return (
-    <div>
+    <div className={styles["list-container"]}>
       <ul>
         {receivedUserData.map((userData) => (
-          <li key={userData["id"]}>
+          <li className={styles["todo-item"]} key={userData["id"]}>
             {" "}
-            {userData["name"]} {userData["age"]}
+            <span>{userData["name"]}</span>
+            <span>{userData["age"]} years</span>
           </li>
         ))}{" "}
       </ul>

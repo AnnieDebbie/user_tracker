@@ -1,0 +1,21 @@
+.list-container{
+    width:90%;
+}
+
+/* ul{
+
+    justify-content: space-between;
+} */
+
+.todo-item {
+    background: #DBE2EF;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    margin-top:5px;
+    list-style: none;
+    padding:13px 0px;
+    text-align: center;
+
+}
+

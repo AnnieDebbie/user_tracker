@@ -1,0 +1,49 @@
+body {
+    background-color: #3F72AF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+/* #add-input-field, #add-todo-btn */
+
+
+
+
+.addInputField {
+    width: 90%;
+    height: 32px;
+    padding-left: 0.5em;
+    background: #DBE2EF;
+    border: 1px solid rgba(177, 177, 177, 0.4);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.addToDoBtn {
+    height: 34px;
+    width: 25%;
+    right: 1px;
+    background: #3f72af;
+    border: none;
+    border-radius: 5px;
+}
+
+.divider {
+    width: 100%;
+    margin: 15px 0px;
+}
+
+.divider:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
