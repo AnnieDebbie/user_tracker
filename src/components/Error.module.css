@@ -1,0 +1,42 @@
+.errorBG {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+
+}
+
+.errorModal {
+    position: absolute;
+    min-width:50%;
+    /* left: 50%; */
+    /* top:calc(50vh - 50%); */
+    bottom: 50%;
+    z-index: 1;
+}
+
+.errorMessage{
+    margin:5px 0px;
+}
+
+.heading {
+    text-transform: capitalize;
+    font-size: larger;
+}
+
+.modalBtnDiv {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.modalBtn {
+    height: 34px;
+    width: 25%;
+    background: #3f72af;
+    border: none;
+    border-radius: 5px;
+}

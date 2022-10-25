@@ -3,6 +3,7 @@ import AddUserForm from "./components/AddUserForm";
 import Users from "./components/Users";
 import { useState } from "react";
 import ErrorModal from "./components/ErrorModal";
+import Card from "./components/Card";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -12,6 +13,8 @@ function App() {
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
   const [formError, setFormError] = useState("");
+  const [isModalOpen, setIsModalOpen]=useState(false)
+
 
   function addUserHandler(newUser) {
     setUsers((prevUsers) => [...prevUsers, newUser]);
@@ -20,6 +23,11 @@ function App() {
   function checkFormValidity(validValue) {
     setIsFormValid(validValue);
   }
+
+  function toggleModal(bool){
+    setIsModalOpen(bool)
+  }
+
 
   function createError(formValidity) {
     if (formValidity === false) {
@@ -47,16 +55,19 @@ function App() {
     isNameValid: isNameValid,
     setIsAgeValid: setIsAgeValid,
     setIsNameValid: setIsNameValid,
-    showErrorModal: createError,
+    createError: createError,
     ageError: ageError,
     nameError: nameError,
     formError: formError,
+    setIsModalOpen:toggleModal,
   };
   return (
     <div className="">
-      <AddUserForm allInfo={allInfo} />
-      <Users users={users} />
-      {isFormValid || <ErrorModal allInfo={allInfo} />}
+      <Card>
+        <AddUserForm allInfo={allInfo} />
+        <Users users={users} />
+        {isModalOpen &&  <ErrorModal allInfo={allInfo} />}
+      </Card>
     </div>
   );
 }

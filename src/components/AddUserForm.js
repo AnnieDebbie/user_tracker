@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-
+import styles from "./form.module.css";
+import Card from "./Card";
 function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
@@ -39,30 +40,46 @@ function AddUserForm(props) {
       propsData.onAddUser(userData);
     } else {
       propsData.setIsFormValid(false);
-      propsData.showErrorModal(formValid);
+      propsData.createError(formValid);
+      propsData.setIsModalOpen(true)
     }
   }
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <div>
-          <input
-            value={userName}
-            onChange={nameChangeHandler}
-            placeholder="name"
-            type="text"
-          />
-          <input
-            value={userAge}
-            onChange={ageChangeHandler}
-            placeholder="age"
-            type="text"
-          />
+    <React.Fragment>
+
+      <div className={styles.container}>
+        <h1> Add User</h1>
+
+        <div className={styles.formContainer}>
+          <form onSubmit={submitHandler}>
+            <div className={styles.inputDiv}>
+              <input
+                className={styles.addInputField}
+                value={userName}
+                onChange={nameChangeHandler}
+                placeholder="name"
+                type="text"
+                />
+
+              <input
+                className={styles.addInputField}
+                value={userAge}
+                onChange={ageChangeHandler}
+                placeholder="age"
+                type="text"
+                />
+            </div>
+
+            <div className={styles.inputDiv}>
+            </div>
+            <button className={styles.addToDoBtn}> Add User </button>
+          </form>
         </div>
-        <button> Add User </button>
-      </form>
-    </div>
+
+        <div className={styles.divider}></div>
+      </div>
+      </React.Fragment>
   );
 }
 
