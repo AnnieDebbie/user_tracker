@@ -70,7 +70,7 @@ function AddUserForm(props) {
                 value={userAge}
                 onChange={ageChangeHandler}
                 placeholder="age"
-                type="text"
+                type="number"
                 />
             </div>
 
