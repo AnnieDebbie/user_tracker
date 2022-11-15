@@ -38,6 +38,9 @@ function AddUserForm(props) {
         id: uuidv4(),
       };
       propsData.onAddUser(userData);
+      setUserName("")
+      setUserAge("")
+
     } else {
       propsData.setIsFormValid(false);
       propsData.createError(formValid);
