@@ -1,4 +1,4 @@
-import styles from "./Users.module.css";
+import styles from "./UsersList.module.css";
 
 function Users(props) {
   let receivedUserData = props.users;

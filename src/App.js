@@ -1,9 +1,9 @@
 import "./App.css";
 import AddUserForm from "./components/AddUserForm";
-import Users from "./components/Users";
+import Users from "./components/UsersList";
 import { useState } from "react";
-import ErrorModal from "./components/ErrorModal";
-import Card from "./components/Card";
+import ErrorModal from "./components/UI/ErrorModal";
+import Card from "./components/UI/Card";
 
 function App() {
   const [users, setUsers] = useState([]);

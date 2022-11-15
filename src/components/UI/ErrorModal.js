@@ -4,11 +4,11 @@ import styles from "./Error.module.css";
 function ErrorModal(props) {
   let errorProps = props.allInfo;
 
-  function closeModal(e){
-    e.preventDefault()
-    errorProps.setIsModalOpen(false)
+  function closeModal(e) {
+    e.preventDefault();
+    errorProps.setIsModalOpen(false);
   }
-  
+
   console.log("heyyy");
   console.log(errorProps.formError, errorProps.ageError, errorProps.nameError);
   return (
@@ -21,7 +21,10 @@ function ErrorModal(props) {
           <p className={styles.errorMessage}> {errorProps.ageError} </p>
 
           <div className={styles.modalBtnDiv}>
-            <button onClick={closeModal} className={styles.modalBtn}> Okay </button>
+            <button onClick={closeModal} className={styles.modalBtn}>
+              {" "}
+              Okay{" "}
+            </button>
           </div>
         </Card>
       </div>

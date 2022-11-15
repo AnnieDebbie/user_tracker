@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./form.module.css";
-import Card from "./Card";
+import Card from "./UI/Card";
 function AddUserForm(props) {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
@@ -18,7 +18,9 @@ function AddUserForm(props) {
 
   function validateInput() {
     let nameValidity = userName.trim().length > 0;
+    console.log(typeof userAge)
     let ageValidity = !isNaN(userAge) && userAge.trim().length > 0;
+    // let ageValidity = userAge.trim().length > 0;
     propsData.setIsNameValid(nameValidity);
     propsData.setIsAgeValid(ageValidity);
 
